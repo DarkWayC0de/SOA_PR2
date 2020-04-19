@@ -1,6 +1,6 @@
 
 # Problemas de sincronización
-##Enunciado 
+## Enunciado 
 Usando lo que hemos aprendido sobre cómo se resuelven los problemas clásicos de sincronización, vamos a resolver un problema algo más general y complejo.
 En el wiki te proponemos varios problemas.
 Escoger uno y resuélvelo. 
