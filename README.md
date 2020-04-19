@@ -1,10 +1,11 @@
-# Problemas de sincronización
 
+# Problemas de sincronización
+##Enunciado 
 Usando lo que hemos aprendido sobre cómo se resuelven los problemas clásicos de sincronización, vamos a resolver un problema algo más general y complejo.
 En el wiki te proponemos varios problemas.
 Escoger uno y resuélvelo. 
 
-## Cómo empezar
+### Cómo empezar
 
 Para empezar:
 
@@ -25,7 +26,7 @@ Para empezar:
 
     Como comentaremos después, la idea es pasar los cambios a `master` solo cuando tengas algo definitivo. 
 
-## Tareas
+### Tareas
 
 Trabaja en la rama `develop` de tu copia local siguiendo los pasos indicados a continuación:
 
@@ -42,7 +43,7 @@ En la siguientes líneas se puede profundizar con más detalle en lo que se ha h
 
     No te olvides de hacer un _commit_ en `develop` para preservar los cambios en README.md.
 
-## Para entregar la actividad
+### Para entregar la actividad
 
 Cuando hayas terminado y estés preparado para entregar la actividad o cuando quieras _feedback_ del profesor:
 
@@ -51,3 +52,32 @@ Cuando hayas terminado y estés preparado para entregar la actividad o cuando qu
  `develop` a `master` para notificar al profesor.
  
 En el título del _pull request_ intenta usar [Feedback] o [Entrega] como prefijo para que podamos identificar rápidamente las consultas cuando nos llegue la notificación al correo y así responderlas lo antes posible.
+
+## Solución
+
+### Compilacion
+
+El proyecto se puede compilar con CMake o con Make
+Desde consola recomiendo usar el Make, casi todos las entornos de desarollo soportan CMake
+
+ #### Compilacion desde consola CMake
+ Para que CMake nos cre nuestro propio Makefile
+~~~~.sh 
+ $ cmake CMakeLists.txt cmake-build-debug/
+ ~~~~  
+ Una vez creado el Makefile continuaremos con su compilacion y ejecucion, en el siguiente paso.
+ 
+ #### Compilacion desde consola Make
+ Para la complacion desde consola acederemos a la carpeta cmake-build-debug
+ ~~~~.sh 
+ $ cd cmake-build-debug/
+ ~~~~ 
+Una vez dentro de la carpeta compilaremos con make
+ ~~~~.sh 
+ $ make
+ ~~~~ 
+Y a continuacion ya podremos ejecutar
+ ~~~~.sh 
+ $ ./soa_1920_sincronizacion_DarkWayC0de
+ ~~~~ 
+
