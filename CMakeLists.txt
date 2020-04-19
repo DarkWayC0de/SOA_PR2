@@ -9,7 +9,6 @@ add_executable(soa_1920_sincronizacion_DarkWayC0de
         src/main.cpp
         src/Cola.h
         src/Cliente.cpp         src/Cliente.h
-        src/Ventanilla.cpp      src/Ventanilla.h
         )
 
 target_link_libraries(soa_1920_sincronizacion_DarkWayC0de ${CMAKE_THREAD_LIBS_INIT})

@@ -6,74 +6,43 @@
 #include <thread>
 #include <pthread.h>
 #include <memory>
-
-#include "Ventanilla.h"
+#include <ctime>
+#include <cstdlib>
+#define  NSILLAS 15
 #include "Cliente.h"
 #include "Cola.h"
-#define  NSILLAS 4
+
+void trabajar(const std::shared_ptr<Cola<Cliente,NSILLAS>>& SalaDeEspera,char  ID);
 
 int main (){
-  //TODO Clase Cliente
-  //TODO Clase Ventanilla
-  //TODO 15 sillas de espera
-  //TODO se desechan los cliente si no caben en sillas de espera
-  //TODO Si trabajador no tiene cliente y sillas de espera esta vacia ir a descansar hasta nuevo cliente entre en silla
-  //TODO Mostrar los eventos
-  //TODO Emplear tiempos aleatorios para simulacion de la actividad
+  srand(time(nullptr));
   auto SalaDeEspera = std::make_shared<Cola<Cliente,NSILLAS>>();
-  auto Cliene1 = std::make_shared<Cliente>();
-  auto Cliene2 = std::make_shared<Cliente>();
-  auto Cliene3 = std::make_shared<Cliente>();
-  auto Cliene4 = std::make_shared<Cliente>();
-  auto Cliene5 = std::make_shared<Cliente>();
-  auto Cliene6 = std::make_shared<Cliente>();
-  auto Cliene7 = std::make_shared<Cliente>();
-  SalaDeEspera->add(Cliene1);
-  SalaDeEspera->add(Cliene2);
-  SalaDeEspera->add(Cliene3);
-  SalaDeEspera->add(Cliene4);
 
-  auto extra1 =  SalaDeEspera->extrac();
-  auto extra2 =  SalaDeEspera->extrac();
-  SalaDeEspera->add(Cliene1);
-  SalaDeEspera->add(Cliene2);
-  auto extra3 =  SalaDeEspera->extrac();
-  auto extra4 =  SalaDeEspera->extrac();
-
-;
-  SalaDeEspera->add(Cliene3);
-  SalaDeEspera->add(extra1);
-  SalaDeEspera->add(extra3);
-
-
- /*
-  // Construimos Correos
- // Ventanilla ventanillaA(punteroSalaDeEspera);
-  //Ventanilla ventanillaB();
-  //Ventanilla ventanillaC();
-  //std::thread hiloventanillA(ventanillaA->trabaja());
-
-
-
-
-  //Abre Correos
-  Cliente  cliente1();
-  Cliente  cliente2();
-  Cliente  cliente3();
-  Cliente  cliente4();
-  Cliente  cliente5();
-  Cliente  cliente6();
-  Cliente  cliente7();
-  Cliente  cliente8();
-  Cliente  cliente9();
-  Cliente  cliente10();
-  Cliente  cliente11();
-  Cliente  cliente12();
-  Cliente  cliente13();
-  Cliente  cliente14();
-  Cliente  cliente15();
-  Cliente  cliente16();
-
-  */
+  std::thread hiloventanillaA(&trabajar,std::ref(SalaDeEspera),'A');
+  std::thread hiloventanillaB(&trabajar,std::ref(SalaDeEspera),'B');
+  std::thread hiloventanillaC(&trabajar,std::ref(SalaDeEspera),'C');
+   int a =0;
+  while (true){
+    auto cliente = std::make_shared<Cliente>('A'+ a);
+    SalaDeEspera->add(cliente);
+    a++;
+    if(a ==26){
+      a=0;
+    }
+  }
   return 0;
+}
+void trabajar(const std::shared_ptr<Cola<Cliente,NSILLAS>>& salaDeEspera, char ID){
+  while (true){
+    std::cout<<"El trabajador"<<ID<<" comprueba si hay clientes esperando\n";
+    if (salaDeEspera->empty()){
+      std::cout<<"El trabajador"<<ID<<" se fue a descansar\n";
+      std::this_thread::sleep_for(std::chrono::seconds(rand()%10));
+    }else{
+      auto cliente = std::move(salaDeEspera->extrac());
+      std::cout<<"El trabajador"<<ID<<" empieza a atender al cliente"<<cliente->ID<<"\n";
+      std::this_thread::sleep_for(std::chrono::seconds(rand()%10));
+      std::cout<<"El trabajador"<<ID<<" termina de  atender al cliente"<<cliente->ID<<"\n";
+    }
+  }
 }

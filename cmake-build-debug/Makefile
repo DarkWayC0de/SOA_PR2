@@ -150,33 +150,6 @@ src/Cliente.cpp.s:
 	$(MAKE) -f CMakeFiles/soa_1920_sincronizacion_DarkWayC0de.dir/build.make CMakeFiles/soa_1920_sincronizacion_DarkWayC0de.dir/src/Cliente.cpp.s
 .PHONY : src/Cliente.cpp.s
 
-src/Ventanilla.o: src/Ventanilla.cpp.o
-
-.PHONY : src/Ventanilla.o
-
-# target to build an object file
-src/Ventanilla.cpp.o:
-	$(MAKE) -f CMakeFiles/soa_1920_sincronizacion_DarkWayC0de.dir/build.make CMakeFiles/soa_1920_sincronizacion_DarkWayC0de.dir/src/Ventanilla.cpp.o
-.PHONY : src/Ventanilla.cpp.o
-
-src/Ventanilla.i: src/Ventanilla.cpp.i
-
-.PHONY : src/Ventanilla.i
-
-# target to preprocess a source file
-src/Ventanilla.cpp.i:
-	$(MAKE) -f CMakeFiles/soa_1920_sincronizacion_DarkWayC0de.dir/build.make CMakeFiles/soa_1920_sincronizacion_DarkWayC0de.dir/src/Ventanilla.cpp.i
-.PHONY : src/Ventanilla.cpp.i
-
-src/Ventanilla.s: src/Ventanilla.cpp.s
-
-.PHONY : src/Ventanilla.s
-
-# target to generate assembly for a file
-src/Ventanilla.cpp.s:
-	$(MAKE) -f CMakeFiles/soa_1920_sincronizacion_DarkWayC0de.dir/build.make CMakeFiles/soa_1920_sincronizacion_DarkWayC0de.dir/src/Ventanilla.cpp.s
-.PHONY : src/Ventanilla.cpp.s
-
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -216,9 +189,6 @@ help:
 	@echo "... src/Cliente.o"
 	@echo "... src/Cliente.i"
 	@echo "... src/Cliente.s"
-	@echo "... src/Ventanilla.o"
-	@echo "... src/Ventanilla.i"
-	@echo "... src/Ventanilla.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
