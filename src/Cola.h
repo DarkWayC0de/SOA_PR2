@@ -32,13 +32,18 @@ class Cola{
   }
 
   std::shared_ptr<T> extrac(){
-    contenido.store(contenido.load(std::memory_order_seq_cst)-1);
-    std::shared_ptr<T> ptrelemnt = std::move(salaDeEspera[indiceExtr.load(std::memory_order_seq_cst)]);
-    indiceExtr.store(indiceExtr.load(std::memory_order_seq_cst) + 1,std::memory_order_seq_cst);
-    if(indiceExtr.load(std::memory_order_seq_cst)>=N){
-      indiceExtr.store(0,std::memory_order_seq_cst);
+    if(contenido.load(std::memory_order_seq_cst)>0) {
+      contenido.store(contenido.load(std::memory_order_seq_cst) - 1);
+      std::shared_ptr<T> ptrelemnt = std::move(salaDeEspera[indiceExtr.load(std::memory_order_seq_cst)]);
+      indiceExtr.store(indiceExtr.load(std::memory_order_seq_cst) + 1, std::memory_order_seq_cst);
+      if (indiceExtr.load(std::memory_order_seq_cst) >= N) {
+        indiceExtr.store(0, std::memory_order_seq_cst);
+      }
+      return ptrelemnt;
+    }else{
+      std::shared_ptr<T> ptrelemnt = nullptr;
+      return ptrelemnt;
     }
-    return ptrelemnt;
   }
 
   bool empty(){
