@@ -8,7 +8,7 @@ find_package(Threads)
 add_executable(soa_1920_sincronizacion_DarkWayC0de
         src/main.cpp
         src/Cola.h
-        src/Cliente.cpp         src/Cliente.h
+        src/Cliente.h   src/Cliente.cpp
         )
 
 target_link_libraries(soa_1920_sincronizacion_DarkWayC0de ${CMAKE_THREAD_LIBS_INIT})

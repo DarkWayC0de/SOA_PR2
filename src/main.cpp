@@ -43,9 +43,9 @@ void trabajar(const std::shared_ptr<Cola<Cliente,NSILLAS>>& salaDeEspera, char I
       std::cout<<"El trabajador"<<ID<<" se fue a descansar\n";
       std::this_thread::sleep_for(std::chrono::seconds(rand()%10));
     }else{
-      std::cout<<"El trabajador"<<ID<<" empieza a atender al cliente"<<cliente->ID<<"\n";
+      std::cout<<"El trabajador"<<ID<<" empieza a atender al cliente"<<cliente->GetId()<<"\n";
       std::this_thread::sleep_for(std::chrono::seconds(rand()%10));
-      std::cout<<"El trabajador"<<ID<<" termina de  atender al cliente"<<cliente->ID<<"\n";
+      std::cout<<"El trabajador"<<ID<<" termina de  atender al cliente"<<cliente->GetId()<<"\n";
     }
   }
 }

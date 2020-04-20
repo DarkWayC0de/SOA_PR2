@@ -6,9 +6,14 @@
 #define SOA_1920_SINCRONIZACION_DARKWAYC0DE_SRC_CLIENTE_H_
 
 class Cliente {
+ private:
+  char ID_;
  public:
-  char ID;
-  explicit Cliente (char ID_):ID(ID_){}
+  char GetId() const;
+ public:
+  void SetId(char id);
+ public:
+  explicit Cliente(char id);
 };
 
 #endif //SOA_1920_SINCRONIZACION_DARKWAYC0DE_SRC_CLIENTE_H_
